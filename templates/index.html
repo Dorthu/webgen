@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for data in features %}
+        {% if data.type == 'post' %}
+            {% include 'post.html' %}
+        {% elif data.type == 'tweet' %}
+            {% include 'tweet.html' %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}
