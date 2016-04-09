@@ -1,0 +1,1 @@
+from .webgen import generate

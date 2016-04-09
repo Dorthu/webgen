@@ -15,5 +15,5 @@ posts = [
     },
 ]
 
-def load_content():
+def load_content(config):
     return posts

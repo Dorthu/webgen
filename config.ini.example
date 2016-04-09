@@ -1,0 +1,12 @@
+[global]
+loaders_dir=loaders
+templates_dir=templates
+
+[blog_loader]
+
+[twitter_loader]
+user=your-twitter-user
+twitter_oauth_token=your-oauth-token
+twitter_oauth_secret=your-oauth-secret
+twitter_access_token=your-access-token
+twitter_access_secret=your-access-secret

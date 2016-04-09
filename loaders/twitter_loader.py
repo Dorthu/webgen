@@ -8,12 +8,20 @@ tweets = [
 
 import tweepy
 
-t = tweepy.OAuthHandler(twitter_oauth_token, twitter_oauth_secret)
-t.set_access_token(twitter_access_token, twitter_access_secret)
-api = tweepy.API(t)
 
-u = api.get_user('dorthu22')
+def load_content(config):
+    t = tweepy.OAuthHandler(config['twitter_oauth_token'], config['twitter_oauth_secret'])
+    t.set_access_token(config['twitter_access_token'], config['twitter_access_secret'])
+    api = tweepy.API(t)
 
+    tweets = api.user_timeline(config['user'])
+    ret = []
 
-def load_content():
-    return tweets
+    for t in tweets:
+        ret.append({
+            "type": "tweet",
+            "content": t.text,
+            "stamp": t.created_at.timestamp()
+        })
+
+    return ret
