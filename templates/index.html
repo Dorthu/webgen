@@ -5,6 +5,8 @@
             {% include 'post.html' %}
         {% elif data.type == 'tweet' %}
             {% include 'tweet.html' %}
+        {% elif data.type == 'github' %}
+            {% include 'github.html' %}
         {% endif %}
     {% endfor %}
 {% endblock %}

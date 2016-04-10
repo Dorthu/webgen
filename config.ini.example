@@ -10,3 +10,6 @@ twitter_oauth_token=your-oauth-token
 twitter_oauth_secret=your-oauth-secret
 twitter_access_token=your-access-token
 twitter_access_secret=your-access-secret
+
+[github_loader]
+username=your-github-user

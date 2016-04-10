@@ -1,3 +1,17 @@
-<div class="tweet">
-    {{ data.content }}
+<div class="tweet col-md-12">
+    <div class="col-md-1 ticon">
+        <a class="tlink" href="https://twitter.com/dorthu22">
+            <i class="fa fa-twitter"></i>
+        </a>
+    </div>
+    <div class="col-md-11 tbody">
+        <div class="col-md-9">
+            <span class='tcontent'>
+                {{ data.content }}
+            </span>
+        </div>
+        <div class="ttimestamp col-md-2 pull-right">
+            {{ data.created.strftime("%-m/%-d/%Y") }}
+        </div>
+    </div>
 </div>

@@ -1,11 +1,3 @@
-tweets = [
-    {
-        "content": "THis is #words @people",
-        "type":"tweet",
-        "stamp": 3
-    }
-]
-
 import tweepy
 
 
@@ -21,7 +13,8 @@ def load_content(config):
         ret.append({
             "type": "tweet",
             "content": t.text,
-            "stamp": t.created_at.timestamp()
+            "stamp": t.created_at.timestamp(),
+            "created": t.created_at,
         })
 
     return ret

@@ -1,6 +1,37 @@
 .tweet {
-    border-radius: 5px;
-    border: 1px solid grey;
-    background-color: white;
-    font-style: bold;
+    margin-top: .5em;
+    margin-bottom: .5em;
+
+    .tbody {
+        border-radius: 2px;
+        border: 1px solid grey;
+        background-color: white;
+        font-style: bold;
+
+        &:before {
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid grey;
+        }
+    }
+
+    .ticon {
+
+        font-size: larger;
+        color: lightgrey;
+        text-align: right;
+        vertical-align: middle;
+
+        .tlink {
+            text-decoration: none;
+        }
+    }
+
+    .ttimestamp {
+        color: grey;
+        font-style: italic;
+        text-align: right;
+    }
 }
