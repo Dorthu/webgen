@@ -2,7 +2,9 @@
 loaders_dir=loaders
 templates_dir=templates
 
-[blog_loader]
+[blogger_loader]
+api_key=your-google-api-key
+blog_id=your-blog-id
 
 [twitter_loader]
 user=your-twitter-user

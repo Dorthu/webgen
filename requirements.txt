@@ -1,3 +1,6 @@
 libsass
 jinja2
 tweepy
+python-dateutil
+google-api-python-client
+PyGithub

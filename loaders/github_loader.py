@@ -20,7 +20,9 @@ def _process_event(e, result_list):
     elif e.type == 'PushEvent':
         result.update({
             "icon": "push",
-            "content": "pushed {} commits to {}".format(e.payload['distinct_size'], e.payload['ref'].split('/')[-1]),
+            "content": "pushed {} commit{} to {}".format(e.payload['distinct_size'],
+                's' if e.payload['distinct_size'] > 1 else '',
+                e.payload['ref'].split('/')[-1]),
         })
         result_list.append(result)
 

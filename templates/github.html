@@ -1,5 +1,5 @@
 <div class="github">
-    <div class='col-md-1 ghicon'>
+    <div class='col-md-11'>
         <i class="fa fa-github-square"></i>
         {% if data.icon == 'push' %}
             <i class="fa fa-arrow-right"></i>
@@ -9,8 +9,6 @@
             <i class="fa fa-code-fork"></i>
         {% endif %}
 
-    </div>
-    <div class="col-md-10">
         <a class='repo_link' href="https://github.com/{{ data.repo }}">
             {{ data.repo }}
         </a>

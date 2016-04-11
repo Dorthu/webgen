@@ -1,7 +1,18 @@
-<div class="post">
-    <p class="title">{{ data.title }}</p>
-    <p class="subheader">{{ data.subtitle }}</p>
-    <p>
-        {{ data.content }}
-    </p>
+<div class="post col-md-12">
+    <div class="row">
+        <span class="col-md-10 title">
+            <a href="{{ data.post_url }}">{{ data.title }}</a>
+        </span>
+        <span class="col-md-1 post_date">{{ data.posted.strftime("%-m/%-d/%Y") }}</span>
+    </div>
+    {% if data.subtitle %}
+        <div class="row">
+            <span class="col-md-12 subheader">{{ data.subtitle }}</span>
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-12">
+            {{ data.content }}
+        </div>
+    </div>
 </div>
