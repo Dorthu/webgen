@@ -1,21 +1,20 @@
 <div class="github">
-    <div class='col-md-11'>
-        <i class="fa fa-github-square"></i>
-        {% if data.icon == 'push' %}
-            <i class="fa fa-arrow-right"></i>
-        {% elif data.icon == 'create' %}
-            <i class="fa fa-asterisk"></i>
-        {% elif data.icon == 'fork' %}
-            <i class="fa fa-code-fork"></i>
-        {% endif %}
+    <div class="row">
+        <div class='col-md-12'>
+            <i class="fa fa-github-square"></i>
+            {% if data.icon == 'push' %}
+                <i class="fa fa-arrow-right"></i>
+            {% elif data.icon == 'create' %}
+                <i class="fa fa-asterisk"></i>
+            {% elif data.icon == 'fork' %}
+                <i class="fa fa-code-fork"></i>
+            {% endif %}
 
-        <a class='repo_link' href="https://github.com/{{ data.repo }}">
-            {{ data.repo }}
-        </a>
-         :: 
-         <span class="desc">{{ data.content }}</span>
-    </div>
-    <div class="col-md-1">
-        {{ data.timestamp.strftime("%-m/%-d/%Y") }}
+            <a class='repo_link' href="https://github.com/{{ data.repo }}">
+                {{ data.repo }}
+            </a>
+            <br/>
+            <span class="desc">{{ data.content }}</span>
+        </div>
     </div>
 </div>

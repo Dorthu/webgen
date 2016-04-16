@@ -7,21 +7,12 @@
         border: 1px solid grey;
         background-color: white;
         font-style: bold;
-
-        &:before {
-            width: 0;
-            height: 0;
-            border-top: 10px solid transparent;
-            border-bottom: 10px solid transparent;
-            border-right: 10px solid grey;
-        }
     }
 
     .ticon {
 
         font-size: larger;
         color: lightgrey;
-        text-align: right;
         vertical-align: middle;
 
         .tlink {

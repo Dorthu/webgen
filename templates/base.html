@@ -25,6 +25,23 @@
             </div>
             <div class='col-md-3'>
                 {% include 'infobox.html' %}
+                <br/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="sideheader">Recent Activity:</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 hidden-sm hidden-xs">
+                        {% for data in features %}
+                            {% if data.type == 'tweet' %}
+                                {% include 'tweet.html' %}
+                            {% elif data.type == 'github' %}
+                                {% include 'github.html' %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
