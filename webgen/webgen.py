@@ -19,7 +19,8 @@ def generate(config_path):
         if f[-3:] == '.py':
             s = SourceFileLoader(f[:-3], '{}/{}'.format(config['global']['loaders_dir'], f)).load_module()
             modules.append(s)
-            posts += s.load_content(config[f[:-3]])
+            if f[:-3] in config:
+                posts += s.load_content(config[f[:-3]])
 
     posts.sort(key=lambda s: s['stamp'])
     posts.reverse()

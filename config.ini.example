@@ -15,3 +15,6 @@ twitter_access_secret=your-access-secret
 
 [github_loader]
 username=your-github-user
+
+[repo_loader]
+repo_dir=/path/to/repo
