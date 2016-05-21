@@ -6,6 +6,7 @@
 # Post Subtitle
 # -----
 import os
+import shutil
 import markdown
 from datetime import datetime
 
@@ -13,6 +14,14 @@ def _update_repo(path):
     result = os.system('git --git-dir={0}/.git --work-tree={0} pull'.format(path))
     if not result:
         print("updating repo failed: {}".format(result))
+
+def _copy_images(path):
+    if not os.path.isdir('output/img'):
+        os.mkdir('output/img')
+    if os.path.isdir("{}/img".format(path)):
+        for f in os.listdir("{}/img".format(path)):
+            if os.path.isfile("{}/img/{}".format(path, f)):
+                shutil.copy("{}/img/{}".format(path, f), 'output/img/{}'.format(f))
 
 def _load_file(f):
     try:
@@ -59,5 +68,6 @@ def load_content(config):
     path = os.path.expanduser(config['repo_dir'])
     if os.path.isdir(path) and os.path.isdir('{}/entries'.format(path)):
         _update_repo(path)
+        _copy_images(path)
         return _load_files('{}/entries'.format(path))
     return []
