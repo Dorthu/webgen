@@ -8,6 +8,7 @@
 import os
 import shutil
 import markdown
+import urllib
 from datetime import datetime
 
 def _update_repo(path):
@@ -43,14 +44,17 @@ def _load_file(f):
     raw_md = f.read()
     parsed_md = markdown.markdown(raw_md)
 
+    page_title = urllib.parse.quote(title) 
     return {
         "type": "post",
         "stamp": publish_date.timestamp(),
         "posted": publish_date,
         "content": parsed_md,
-        "post_url": 'todo',
+        "post_url": '{}.html'.format(page_title),
         "title": title,
         "subtitle": subtitle,
+        "page-title": page_title,
+        "page": True,
     }
 
 def _load_files(path):

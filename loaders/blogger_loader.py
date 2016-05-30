@@ -1,5 +1,6 @@
 from dateutil.parser import parse as parse_date
 from apiclient.discovery import build
+import urllib
 
 def _get_post(post):
    post_date = parse_date(post['published'])
@@ -12,6 +13,8 @@ def _get_post(post):
        ptitle = parts[0]
        psubtitle = None
 
+
+   page_title = urllib.parse.quote(ptitle) 
    return {
         "type": "post",
         "stamp": post_date.timestamp(),
@@ -20,6 +23,8 @@ def _get_post(post):
         "post_url": post['url'],
         "title": ptitle,
         "subtitle": psubtitle,
+        "page-title": page_title,
+        "page": True,
     }
 
 def load_content(config):

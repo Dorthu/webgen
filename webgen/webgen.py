@@ -14,6 +14,7 @@ def generate(config_path):
     modules = []
     posts = []
     config = load_config(config_path)
+    pages = []
 
     for f in os.listdir(config['global']['loaders_dir']):
         if f[-3:] == '.py':
@@ -25,11 +26,18 @@ def generate(config_path):
     posts.sort(key=lambda s: s['stamp'])
     posts.reverse()
 
+    pages = [ p for p in posts if 'page' in p ]
+
     env = Environment(loader=FileSystemLoader(config['global']['templates_dir']))
     t = env.get_template('index.html')
 
     with open('output/index.html', 'w') as f:
         f.write(t.render(features=posts))
+
+    pt = env.get_template('page.html')
+    for p in pages:
+        with open('output/{}.html'.format(p['page-title']), 'w') as f:
+            f.write(pt.render(data=p, features=posts))
 
     compiled_sass = ""
 
