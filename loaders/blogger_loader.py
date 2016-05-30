@@ -14,7 +14,7 @@ def _get_post(post):
        psubtitle = None
 
 
-   page_title = urllib.parse.quote(ptitle) 
+   page_title = ptitle.replace(' ','-')
    return {
         "type": "post",
         "stamp": post_date.timestamp(),
