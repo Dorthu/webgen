@@ -36,7 +36,7 @@ def generate(config_path):
 
     pt = env.get_template('page.html')
     for p in pages:
-        with open('output/{}.html'.format(p['page-title']), 'w') as f:
+        with open('output/entries/{}.html'.format(p['page-title']), 'w') as f:
             f.write(pt.render(data=p, features=posts))
 
     compiled_sass = ""
