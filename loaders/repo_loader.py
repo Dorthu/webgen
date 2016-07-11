@@ -8,7 +8,7 @@
 import os
 import shutil
 import markdown
-import urllib
+from urllib.parse import quote
 from datetime import datetime
 
 def _update_repo(path):
@@ -44,7 +44,7 @@ def _load_file(f):
     raw_md = f.read()
     parsed_md = markdown.markdown(raw_md)
 
-    page_title = title.replace(' ','-')
+    page_title = quote(title.replace(' ','-'))
     return {
         "type": "post",
         "stamp": publish_date.timestamp(),
