@@ -44,7 +44,7 @@ def _load_file(f):
     raw_md = f.read()
     parsed_md = markdown.markdown(raw_md)
 
-    page_title = quote(title.replace(' ','-'))
+    page_title = title.replace(' ','-')
     return {
         "type": "post",
         "stamp": publish_date.timestamp(),
