@@ -22,6 +22,12 @@
         <div class="row-fluid">
             <div class='col-md-2 text-center'>
                 <canvas id="flame-left" width="100" height="100"></canvas>
+
+                {% for data in features %}
+                    {% if data.type == 'tweet' %}
+                        {% include 'tweet.html' %}
+                    {% endif %}
+                {% endfor %}
             </div>
             <div class='col-md-8'>
                 {% block content %}
@@ -29,6 +35,12 @@
             </div>
             <div class='col-md-2'>
                 <canvas id="flame-right" width="100" height="100"></canvas>
+
+                {% for data in features %}
+                    {% if data.type == 'github' %}
+                        {% include 'github.html' %}
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -49,16 +61,19 @@
 
         function update_particle(part, step) {
             part.y = part.y - step;
+            part.x += 1 * ((30 - part.x) / 10);
             part.color.g = part.color.g + step;
             part.color.b = part.color.b + step;
 
-            return part.y < 10;
+            return part.y > 10;
         }
 
         function animate_flames() {
+            var resulting_particles=[];
             for(var i=0; i<ctxs.length; i++) {
                 console.log('flame holder');
                 var ctx = ctxs[i];
+                ctx.clearRect(0,0,100,100);
                 ctx.fillStyle = "rgba(0,0,0,1)";
                 ctx.beginPath();
                 ctx.moveTo(20,20);
@@ -68,21 +83,31 @@
                 ctx.closePath();
                 ctx.fill();
 
-                for(var i=0; i<particles.length; i++) {
+                    ctx.fillStyle="#FF8899";
+                for(var j=particles.length-1; j>=0; j--) {
                     console.log("particle loop");
-                    var cur = particles[i];
-                    update_particle(cur, 1);
+                    var cur = particles[j];
+                    if(update_particle(cur, 1)) {
+                        resulting_particles.push(cur);
+                    }
+                    ctx.fillRect(cur.x-1, cur.y-1, 2, 2);
                 }
             }
+
+            particles = resulting_particles;
+            make_particles();
         }
 
         function make_particles() {
-            for(var i=0; i<6; i++) {
+            for(var i=0; i<10; i++) {
                 particles.push(make_particle(20 + Math.random()*20, 20));
             }
         }
 
         animate_flames();
+
+        make_particles();
+        //window.setInterval(animate_flames, 100);
     </script>
     {% block scripts %}
     {% endblock %}
