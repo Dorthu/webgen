@@ -1,16 +1,20 @@
 .github {
+    .fa {
+        color: grey;
+    }
+
     .ghicon {
         text-align: right;
     }
 
     .desc {
-        color: grey;
+        color: lightgrey;
         font-style: italic;
     }
 
     .repo_link {
         text-decoration: none;
-        color: black;
+        color: grey;
 
         &:hover {
             text-decoration: underline;

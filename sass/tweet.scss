@@ -4,24 +4,26 @@
 
     .tbody {
         border-radius: 2px;
-        border: 1px solid grey;
-        background-color: white;
+        border: 1px solid lightgrey;
+        background-color: #FFFEFE;
         font-style: bold;
+        color: grey;
     }
 
     .ticon {
 
         font-size: larger;
-        color: lightgrey;
+        color: #ABABAB;
         vertical-align: middle;
 
         .tlink {
+            color: grey;
             text-decoration: none;
         }
     }
 
     .ttimestamp {
-        color: grey;
+        color: lightgrey;
         font-style: italic;
         text-align: right;
     }
