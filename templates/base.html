@@ -21,7 +21,7 @@
     <div class="container-fluid" id="main">
         <div class="row-fluid">
             <div class='col-md-2 text-center'>
-                <canvas id="flame-left" width="100" height="100"></canvas>
+                <!-- flame goes here -->
 
                 {% for data in features %}
                     {% if data.type == 'tweet' %}
@@ -34,7 +34,7 @@
                 {% endblock %}
             </div>
             <div class='col-md-2'>
-                <canvas id="flame-right" width="100" height="100"></canvas>
+                <!-- flame goes here -->
 
                 {% for data in features %}
                     {% if data.type == 'github' %}
@@ -56,16 +56,16 @@
         var particles = [];
 
         function make_particle(x,y) {
-            return { x: x, y: y, color: { r: 1, g: 0, b: 0 } };
+            return { x: x, y: y, color: { r: 250, g: 0, b: 0 } };
         }
 
         function update_particle(part, step) {
             part.y = part.y - step;
             part.x += 1 * ((30 - part.x) / 10);
-            part.color.g = part.color.g + step;
-            part.color.b = part.color.b + step;
+            part.color.g = part.color.g + 20 * step;
+            part.color.b = part.color.b + 20 * step;
 
-            return part.y > 10;
+            return part.y > 15;
         }
 
         function animate_flames() {
@@ -74,24 +74,26 @@
                 console.log('flame holder');
                 var ctx = ctxs[i];
                 ctx.clearRect(0,0,100,100);
+
+                ctx.fillStyle="#FF8899";
+                for(var j=particles.length-1; j>=0; j--) {
+                    var cur = particles[j];
+                    if(update_particle(cur, 1*Math.random())) {
+                        resulting_particles.push(cur);
+                    }
+                    ctx.fillStyle = "rgba("+cur.color.r+","+cur.color.g+","+cur.color.b+",1)";
+                    ctx.fillRect(cur.x-2, cur.y-2, 4, 4);
+                }
+
+                /// draw the flame holder
                 ctx.fillStyle = "rgba(0,0,0,1)";
                 ctx.beginPath();
                 ctx.moveTo(20,20);
                 ctx.lineTo(40,20);
-                ctx.lineTo(40,25)
+                ctx.lineTo(40,25);
                 ctx.quadraticCurveTo(30,40,20,25);
                 ctx.closePath();
                 ctx.fill();
-
-                    ctx.fillStyle="#FF8899";
-                for(var j=particles.length-1; j>=0; j--) {
-                    console.log("particle loop");
-                    var cur = particles[j];
-                    if(update_particle(cur, 1)) {
-                        resulting_particles.push(cur);
-                    }
-                    ctx.fillRect(cur.x-1, cur.y-1, 2, 2);
-                }
             }
 
             particles = resulting_particles;
@@ -99,7 +101,7 @@
         }
 
         function make_particles() {
-            for(var i=0; i<10; i++) {
+            for(var i=0; i<14; i++) {
                 particles.push(make_particle(20 + Math.random()*20, 20));
             }
         }
@@ -107,7 +109,7 @@
         animate_flames();
 
         make_particles();
-        //window.setInterval(animate_flames, 100);
+///        window.setInterval(animate_flames, 100);
     </script>
     {% block scripts %}
     {% endblock %}
