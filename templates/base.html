@@ -21,7 +21,8 @@
     <div class="container-fluid" id="main">
         <div class="row-fluid">
             <div class='col-md-2 text-center'>
-                <!-- flame goes here -->
+                <img src="/img/flame.gif" width="128" height="128"
+                        class="centered"/>
 
                 {% for data in features %}
                     {% if data.type == 'tweet' %}
@@ -34,7 +35,8 @@
                 {% endblock %}
             </div>
             <div class='col-md-2'>
-                <!-- flame goes here -->
+                <img src="/img/flame.gif" width="128" height="128"
+                    class="centered"/>
 
                 {% for data in features %}
                     {% if data.type == 'github' %}
